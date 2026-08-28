@@ -125,17 +125,75 @@ function updateCountdown(){
 }
 updateCountdown();setInterval(updateCountdown,1000);
 
-const donationTarget=300000;
-let totalIncome=5000,totalExpense=2000;
-function updateFinancialData(){
- document.getElementById("totalIncome").innerText="₹"+totalIncome.toLocaleString("en-IN");
- document.getElementById("totalExpense").innerText="₹"+totalExpense.toLocaleString("en-IN");
- const percentage=Math.min((totalIncome/donationTarget)*100,100);
- document.getElementById("progressBar").style.width=percentage+"%";
- document.getElementById("progressText").innerText="₹"+totalIncome.toLocaleString("en-IN")+" / ₹"+donationTarget.toLocaleString("en-IN")+" ("+percentage.toFixed(1)+"%)";
-}
-updateFinancialData();
+const API_URL = "https://script.google.com/macros/s/AKfycbxdwH0nStrlyFdmsD5Q_qn2A0wG1wOM3s883PM79C-rl9s_rfjWTNC_d3_5v2NkQYbU/exec";
 
+function updateFinancialData() {
+  fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+
+      const donationTarget = Number(data.target || 300000);
+      const transactions = data.transactions || [];
+
+      let totalIncome = 0;
+      let totalExpense = 0;
+
+      transactions.forEach(item => {
+        const amount = Number(item.amount || 0);
+
+        if (String(item.type).toLowerCase() === "donation") {
+          totalIncome += amount;
+        }
+
+        if (String(item.type).toLowerCase() === "expense") {
+          totalExpense += amount;
+        }
+      });
+
+      document.getElementById("totalIncome").innerText =
+        "₹" + totalIncome.toLocaleString("en-IN");
+
+      document.getElementById("totalExpense").innerText =
+        "₹" + totalExpense.toLocaleString("en-IN");
+
+      const percentage = Math.min(
+        (totalIncome / donationTarget) * 100,
+        100
+      );
+
+      document.getElementById("progressBar").style.width =
+        percentage + "%";
+
+      document.getElementById("progressText").innerText =
+        "₹" + totalIncome.toLocaleString("en-IN") +
+        " / ₹" + donationTarget.toLocaleString("en-IN") +
+        " (" + percentage.toFixed(1) + "%)";
+
+      const table = document.getElementById("transactionTable");
+
+      if (table) {
+        table.innerHTML = "";
+
+        transactions.forEach(item => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td>${item.date || ""}</td>
+            <td>${item.name || ""}</td>
+            <td>${item.type || ""}</td>
+            <td>₹${Number(item.amount || 0).toLocaleString("en-IN")}</td>
+          `;
+
+          table.appendChild(row);
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Google Sheet connection error:", error);
+    });
+}
+
+updateFinancialData();
 function shareWebsite(){
  const text="🙏 J R Puram Ganesh Utsav Committee Website";
  window.open("https://wa.me/?text="+encodeURIComponent(text+"\n"+window.location.href),"_blank");

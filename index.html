@@ -139,11 +139,11 @@ function updateFinancialData() {
       let totalExpense = 0;
 
       transactions.forEach(item => {
-        const amount = Number(String(item.amount || 0).replace(/[₹,\s]/g, "")) || 0;
+    const amount = Number(String(item.amount || 0).replace(/[₹,\s]/g, "")) || 0;
 
-        if (String(item.type).toLowerCase() === "donation") {
-          totalIncome += amount;
-        }
+    if (String(item.type).toLowerCase() === "donation") {
+        totalIncome += amount;
+    }
 
         if (String(item.type).toLowerCase() === "expense") {
           totalExpense += amount;

@@ -181,7 +181,7 @@ function updateFinancialData() {
             <td>${item.date || ""}</td>
             <td>${item.name || ""}</td>
             <td>${item.type || ""}</td>
-            <td>₹${Number(item.amount || 0).toLocaleString("en-IN")}</td>
+            <td>₹${Number(String(item.amount || 0).replace(/[₹,\s]/g, "")) || 0}</td>
           `;
 
           table.appendChild(row);

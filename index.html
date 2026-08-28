@@ -1,1 +1,757 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J R Puram Ganesh Utsav Committee</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Noto Sans Telugu",sans-serif;
+  background:#fffaf3;
+  color:#3b2417;
+  line-height:1.6;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,250,243,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #ead8c4;
+}
+
+.nav-inner{
+  max-width:1150px;
+  margin:auto;
+  padding:13px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-weight:800;
+  font-size:17px;
+}
+
+.nav-links{
+  display:flex;
+  gap:22px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#5b3925;
+  font-weight:600;
+  font-size:14px;
+}
+
+.hero{
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 20px;
+  background:
+    radial-gradient(circle at 50% 25%,#ffe7bd 0,#fff7eb 42%,#fffaf3 72%);
+}
+
+.hero-content{
+  max-width:850px;
+}
+
+.badge{
+  display:inline-block;
+  background:#fff;
+  border:1px solid #e8cba5;
+  padding:7px 16px;
+  border-radius:50px;
+  color:#9a4d08;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(32px,6vw,64px);
+  line-height:1.15;
+  color:#7c3100;
+  margin-bottom:12px;
+}
+
+.hero h2{
+  font-size:clamp(18px,3vw,28px);
+  color:#a15b18;
+  margin-bottom:28px;
+}
+
+.ganesh-box{
+  width:min(340px,80vw);
+  height:340px;
+  margin:0 auto 30px;
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#f2d5ae,#fff7e9);
+  border:5px solid #fff;
+  box-shadow:0 20px 55px rgba(113,58,12,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#8b5a30;
+  font-weight:700;
+}
+
+.ganesh-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.time-box{
+  min-width:85px;
+  padding:14px 10px;
+  border-radius:16px;
+  background:#7d3000;
+  color:white;
+  box-shadow:0 8px 20px rgba(90,35,0,.18);
+}
+
+.time-box strong{
+  display:block;
+  font-size:28px;
+  line-height:1;
+}
+
+.time-box span{
+  font-size:12px;
+  opacity:.85;
+}
+
+section{
+  padding:70px 20px;
+}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-title h2{
+  color:#7d3000;
+  font-size:32px;
+  margin-bottom:7px;
+}
+
+.section-title p{
+  color:#866c59;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border:1px solid #ead8c4;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(80,45,20,.06);
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat small{
+  color:#927a67;
+}
+
+.stat h3{
+  margin-top:7px;
+  font-size:30px;
+  color:#7d3000;
+}
+
+.progress-wrap{
+  margin-top:25px;
+  background:#f0e1d1;
+  height:17px;
+  border-radius:50px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#d85b00,#f1a321);
+  border-radius:50px;
+  transition:width 1s ease;
+}
+
+.progress-text{
+  margin-top:10px;
+  text-align:center;
+  font-weight:700;
+  color:#7d3000;
+}
+
+.donate{
+  background:#fff0d9;
+}
+
+.qr-area{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+
+.qr-box{
+  background:white;
+  border-radius:25px;
+  padding:25px;
+  text-align:center;
+  border:1px solid #ead8c4;
+}
+
+.qr-placeholder{
+  width:250px;
+  height:250px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f7efe5;
+  border:2px dashed #d6b993;
+  border-radius:15px;
+  color:#8c7159;
+  font-weight:600;
+}
+
+.qr-placeholder img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  background:white;
+  border:1px solid #ead8c4;
+  border-radius:20px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px;
+}
+
+th,td{
+  padding:15px;
+  text-align:left;
+  border-bottom:1px solid #eee0d2;
+}
+
+th{
+  background:#7d3000;
+  color:white;
+}
+
+.income{
+  color:#23804a;
+  font-weight:700;
+}
+
+.expense{
+  color:#c13c29;
+  font-weight:700;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.gallery-item{
+  height:230px;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#f1d5b0,#fff4df);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#8c6c4d;
+  font-weight:600;
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.events{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.event{
+  background:white;
+  border:1px solid #ead8c4;
+  border-radius:20px;
+  padding:25px;
+}
+
+.event-date{
+  color:#d15b09;
+  font-weight:800;
+  font-size:14px;
+}
+
+.event h3{
+  margin:7px 0;
+  color:#6e2e0a;
+}
+
+footer{
+  background:#3b2115;
+  color:#f7e8d7;
+  padding:40px 20px;
+  text-align:center;
+}
+
+.footer-title{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.whatsapp{
+  display:inline-block;
+  margin-top:18px;
+  padding:11px 20px;
+  background:#fff;
+  color:#3b2115;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+@media(max-width:800px){
+  .nav-links{
+    display:none;
+  }
+
+  .cards,
+  .qr-area,
+  .events{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero{
+    min-height:600px;
+  }
+}
+
+@media(max-width:480px){
+  .gallery{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery-item{
+    height:170px;
+  }
+
+  .time-box{
+    min-width:72px;
+  }
+
+  .time-box strong{
+    font-size:23px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">🙏 J R Puram Ganesh Utsav</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#donations">Donations</a>
+      <a href="#expenses">Expenses</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#events">Events</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+
+    <div class="badge">🙏 శ్రీ గణేశాయ నమః 🙏</div>
+
+    <div class="ganesh-box">
+      <span>మీ వినాయకుడి ఫోటో ఇక్కడ వస్తుంది</span>
+    </div>
+
+    <h1>J R Puram</h1>
+    <h2>Ganesh Utsav Committee</h2>
+
+    <div class="countdown">
+      <div class="time-box">
+        <strong id="days">00</strong>
+        <span>రోజులు</span>
+      </div>
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <span>గంటలు</span>
+      </div>
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <span>నిమిషాలు</span>
+      </div>
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <span>సెకన్లు</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="donations">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>🙏 విరాళాల పారదర్శకత</h2>
+      <p>మీ సహకారంతో మన గణేష్ ఉత్సవం</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card stat">
+        <small>విరాళాల లక్ష్యం</small>
+        <h3>₹3,00,000</h3>
+      </div>
+
+      <div class="card stat">
+        <small>ఇప్పటివరకు వచ్చిన మొత్తం</small>
+        <h3 id="totalIncome">₹0</h3>
+      </div>
+
+      <div class="card stat">
+        <small>ఇప్పటివరకు ఖర్చు</small>
+        <h3 id="totalExpense">₹0</h3>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="progress-text" id="progressText">
+        ₹0 / ₹3,00,000
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="donate">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>💳 విరాళం ఇవ్వండి</h2>
+      <p>మీకు వీలైనంత సహాయం చేయండి</p>
+    </div>
+
+    <div class="qr-area">
+
+      <div>
+        <h2 style="color:#7d3000;margin-bottom:15px">
+          UPI ద్వారా విరాళం
+        </h2>
+
+        <p>
+          క్రింద ఉన్న QR Code స్కాన్ చేసి మీ విరాళాన్ని అందించవచ్చు.
+        </p>
+
+        <p style="margin-top:15px;font-weight:700">
+          మీ సహకారం మా ఉత్సవానికి ఎంతో విలువైనది 🙏
+        </p>
+      </div>
+
+      <div class="qr-box">
+        <div class="qr-placeholder">
+          <span>మీ UPI QR Code ఇక్కడ వస్తుంది</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="expenses">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📊 ఆదాయం & ఖర్చుల వివరాలు</h2>
+      <p>ప్రతి రూపాయి పారదర్శకంగా</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>తేదీ</th>
+            <th>పేరు / వివరాలు</th>
+            <th>రకం</th>
+            <th>మొత్తం</th>
+          </tr>
+        </thead>
+
+        <tbody id="transactionTable">
+
+          <tr>
+            <td>27-08-2026</td>
+            <td>Sample Donation</td>
+            <td class="income">ఆదాయం</td>
+            <td class="income">₹5,000</td>
+          </tr>
+
+          <tr>
+            <td>27-08-2026</td>
+            <td>Sample Expense</td>
+            <td class="expense">ఖర్చు</td>
+            <td class="expense">₹2,000</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📸 ఫోటో గ్యాలరీ</h2>
+      <p>మన గణేష్ ఉత్సవం జ్ఞాపకాలు</p>
+    </div>
+
+    <div class="gallery">
+
+      <div class="gallery-item">ఫోటో 1</div>
+      <div class="gallery-item">ఫోటో 2</div>
+      <div class="gallery-item">ఫోటో 3</div>
+      <div class="gallery-item">ఫోటో 4</div>
+      <div class="gallery-item">ఫోటో 5</div>
+      <div class="gallery-item">ఫోటో 6</div>
+      <div class="gallery-item">ఫోటో 7</div>
+      <div class="gallery-item">ఫోటో 8</div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="events">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📅 ఉత్సవ కార్యక్రమాలు</h2>
+      <p>త్వరలో పూర్తి కార్యక్రమ వివరాలు</p>
+    </div>
+
+    <div class="events">
+
+      <div class="event">
+        <div class="event-date">సెప్టెంబర్ 4</div>
+        <h3>వినాయక చవితి</h3>
+        <p>గణపతి ప్రతిష్ఠాపన మరియు ప్రత్యేక పూజలు.</p>
+      </div>
+
+      <div class="event">
+        <div class="event-date">త్వరలో</div>
+        <h3>ప్రత్యేక పూజ</h3>
+        <p>కార్యక్రమ వివరాలు త్వరలో ఇక్కడ అప్డేట్ అవుతాయి.</p>
+      </div>
+
+      <div class="event">
+        <div class="event-date">త్వరలో</div>
+        <h3>విసర్జన</h3>
+        <p>విసర్జన కార్యక్రమ వివరాలు త్వరలో అందుబాటులో ఉంటాయి.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+
+  <div class="footer-title">
+    J R Puram Ganesh Utsav Committee
+  </div>
+
+  <p>మన గణపతి • మన ఉత్సవం • మన బాధ్యత 🙏</p>
+
+  <a class="whatsapp" href="#" onclick="shareWebsite()">
+    📲 WhatsAppలో Share చేయండి
+  </a>
+
+</footer>
+
+<script>
+
+/* =========================
+   COUNTDOWN
+   ========================= */
+
+const targetDate = new Date("September 4, 2026 00:00:00").getTime();
+
+function updateCountdown(){
+
+  const now = new Date().getTime();
+  const difference = targetDate - now;
+
+  if(difference <= 0){
+    document.getElementById("days").innerText = "00";
+    document.getElementById("hours").innerText = "00";
+    document.getElementById("minutes").innerText = "00";
+    document.getElementById("seconds").innerText = "00";
+    return;
+  }
+
+  const days = Math.floor(difference / (1000*60*60*24));
+  const hours = Math.floor(
+    (difference % (1000*60*60*24)) / (1000*60*60)
+  );
+  const minutes = Math.floor(
+    (difference % (1000*60*60)) / (1000*60)
+  );
+  const seconds = Math.floor(
+    (difference % (1000*60)) / 1000
+  );
+
+  document.getElementById("days").innerText =
+    String(days).padStart(2,"0");
+
+  document.getElementById("hours").innerText =
+    String(hours).padStart(2,"0");
+
+  document.getElementById("minutes").innerText =
+    String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds").innerText =
+    String(seconds).padStart(2,"0");
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+
+/* =========================
+   DONATION TARGET
+   ========================= */
+
+const donationTarget = 300000;
+
+/*
+   Google Sheet connection
+   మనం తర్వాత ఇక్కడ Google Sheet URL పెడతాం.
+*/
+
+let totalIncome = 5000;
+let totalExpense = 2000;
+
+function updateFinancialData(){
+
+  document.getElementById("totalIncome").innerText =
+    "₹" + totalIncome.toLocaleString("en-IN");
+
+  document.getElementById("totalExpense").innerText =
+    "₹" + totalExpense.toLocaleString("en-IN");
+
+  let percentage =
+    Math.min((totalIncome / donationTarget) * 100,100);
+
+  document.getElementById("progressBar").style.width =
+    percentage + "%";
+
+  document.getElementById("progressText").innerText =
+    "₹" + totalIncome.toLocaleString("en-IN") +
+    " / ₹" + donationTarget.toLocaleString("en-IN") +
+    "  (" + percentage.toFixed(1) + "%)";
+}
+
+updateFinancialData();
+
+
+/* =========================
+   WHATSAPP SHARE
+   ========================= */
+
+function shareWebsite(){
+
+  const text =
+    "🙏 J R Puram Ganesh Utsav Committee Website";
+
+  const url = window.location.href;
+
+  window.open(
+    "https://wa.me/?text=" +
+    encodeURIComponent(text + "\n" + url),
+    "_blank"
+  );
+}
+
+</script>
+
+</body>
+</html>

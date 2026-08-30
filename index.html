@@ -444,7 +444,50 @@ footer{background:#3b2115;color:#f7e8d7;padding:40px 20px;text-align:center}
 </div>
 <div class="card" style="margin-top:20px"><div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div><div class="progress-text" id="progressText">₹0 / ₹3,00,000</div></div>
 </div></section>
+<section id="expenses">
+  <div class="container">
 
+    <div class="section-title">
+      <h2>💸 ఖర్చుల వివరాలు</h2>
+      <p>ప్రతి రూపాయి ఎక్కడ ఖర్చయిందో పారదర్శకంగా</p>
+    </div>
+
+    <div class="expense-summary">
+
+      <div class="expense-card">
+        <small>మొత్తం ఖర్చులు</small>
+        <h3 id="expenseTotal">₹0</h3>
+      </div>
+
+      <div class="expense-card">
+        <small>మొత్తం విరాళాలు</small>
+        <h3 id="incomeTotal">₹0</h3>
+      </div>
+
+      <div class="expense-card">
+        <small>మిగిలిన మొత్తం</small>
+        <h3 id="balanceTotal">₹0</h3>
+      </div>
+
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>తేదీ</th>
+            <th>ఖర్చు వివరాలు</th>
+            <th>కేటగిరీ</th>
+            <th>మొత్తం</th>
+          </tr>
+        </thead>
+
+        <tbody id="expenseTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
 <section class="donate">
   <div class="container">
 

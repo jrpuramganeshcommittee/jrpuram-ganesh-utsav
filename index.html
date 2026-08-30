@@ -413,6 +413,81 @@ footer{background:#3b2115;color:#f7e8d7;padding:40px 20px;text-align:center}
   height: 42px;
   object-fit: contain;
   border-radius: 50%;
+}/* EXPENSES */
+
+.expense-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.expense-card {
+  background: #fff;
+  border: 1px solid #ead8c4;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(80,45,20,.06);
+}
+
+.expense-card small {
+  color: #866c59;
+  font-size: 14px;
+}
+
+.expense-card h3 {
+  margin: 8px 0 0;
+  color: #8b3500;
+  font-size: 28px;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #ead8c4;
+  border-radius: 20px;
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrap th {
+  background: #8b3500;
+  color: #fff;
+  padding: 16px;
+  text-align: left;
+}
+
+.table-wrap td {
+  padding: 15px;
+  border-bottom: 1px solid #ead8c4;
+}
+
+@media (max-width: 600px) {
+  .expense-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .expense-card {
+    padding: 18px;
+  }
+
+  .expense-card h3 {
+    font-size: 24px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .table-wrap table {
+    min-width: 600px;
+  }
 }
 </style>
 </style>
